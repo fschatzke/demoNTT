@@ -10,4 +10,6 @@ spring.datasource.username=sa
 spring.datasource.password=sa
 spring.h2.console.enabled=true
 
+En `<spring.datasource.url>` se debe configurar con el PATH asociado a la BD (.mv) del motor H2
+
 El archivo table.sql contiene el script de creación sql de la tabla USUARIO
