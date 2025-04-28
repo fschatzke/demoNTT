@@ -1,0 +1,17 @@
+create table USUARIO
+(
+    ID             INTEGER auto_increment
+        primary key,
+    NOMBRE         CHARACTER VARYING(75),
+    CORREO         CHARACTER VARYING(75)
+        constraint USUARIO_PK
+            unique,
+    CONTRASEÑA     CHARACTER VARYING(15),
+    PAISTELEFONO   CHARACTER VARYING(2) ARRAY[3],
+    CIUDADTELEFONO CHARACTER VARYING(2) ARRAY[3],
+    TELEFONO       CHARACTER VARYING(10) ARRAY[3],
+    CREADO         TIMESTAMP default CURRENT_TIMESTAMP,
+    MODIFICADO     TIMESTAMP,
+    ULTIMOLOGIN    TIMESTAMP,
+    TOKEN          CHARACTER VARYING(1000)
+);

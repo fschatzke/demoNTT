@@ -35,12 +35,18 @@ public class UsuarioService {
         if(response!=null){
             response.setNombre(user.getNombre());
             response.setContraseña(user.getContraseña());
-            response.setModiificado(getTimeStamp());
+            response.setModificado(getTimeStamp());
 
             return userRepository.save(response);
         }else{
             return null;
         }
+    }
+
+    public Usuario updateLastLogin(Usuario user){
+        user.setUltimologin(getTimeStamp());
+
+        return userRepository.save(user);
     }
 
     public Usuario getUserByEmail(String email) {
@@ -81,6 +87,8 @@ public class UsuarioService {
             userObject.put("correo", item.getCorreo());
             userObject.put("contraseña", item.getContraseña());
             userObject.put("telefonos", phoneArray);
+            userObject.put("modificado", item.getModificado().toString());
+            userObject.put("ulitmologin", item.getUltimologin().toString());
 
             userObjectArray.put(userObject);
         }

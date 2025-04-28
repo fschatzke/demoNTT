@@ -2,7 +2,6 @@ package cl.fschatzke.demoNTT;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @Entity
 public class Usuario {
@@ -81,7 +80,7 @@ public class Usuario {
         return modificado;
       }
     
-    public void setModiificado(Timestamp timestamp) {
+    public void setModificado(Timestamp timestamp) {
         this.modificado =timestamp;
     }
 

@@ -21,16 +21,15 @@ public class UsuarioController {
 
     @GetMapping(path="/login", params = {"email"}, produces = { "application/json" })
     public String login(String email) {
-        Usuario responseService=usuarioService.getUserByEmail(email);
+        Usuario userLogged=usuarioService.getUserByEmail(email);
 
-        if (responseService==null){
+        if (userLogged==null){
             return new JSONObject().put("Mensaje", "El correo no está registrado").toString();
             // throw new CustomException("Usuario no encontrado");
         }else{
-            responseService.setUltimologin(usuarioService.getTimeStamp());
-            usuarioService.saveUser(responseService);
-            
-            return new JSONObject().put("token", responseService.getToken()).toString();
+            usuarioService.updateLastLogin(userLogged);
+
+            return new JSONObject().put("token", userLogged.getToken()).toString();
         }
     }
 
